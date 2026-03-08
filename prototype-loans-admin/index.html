@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loans Admin - eConX Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        'enx-navy': 'hsl(229, 61%, 28%)',
+        'enx-green': 'rgba(0, 173, 104, 0.9)'
+      }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/loans.css">
+</head>
+<body class="bg-[#f8f9fb]">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>Enterprise</h1>
+      <div class="logo-subtitle">Loans Module</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section" data-section="dashboard">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Dashboard
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="overview">
+            <a href="#overview">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Overview
+            </a>
+          </li>
+          <li class="nav-item" data-route="work-queues">
+            <a href="#work-queues">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+              Work Queues
+            </a>
+          </li>
+          <li class="nav-item" data-route="reporting">
+            <a href="#reporting">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+              Reporting
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="enquiries">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Enquiries
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="manage-enquiries">
+            <a href="#manage-enquiries">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              Manage Enquiries
+            </a>
+          </li>
+          <li class="nav-item" data-route="enquiry-review">
+            <a href="#enquiry-review">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+              Enquiry Review
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="cases">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Cases
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="manage-cases">
+            <a href="#manage-cases">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+              Manage Cases
+            </a>
+          </li>
+          <li class="nav-item" data-route="case-workspace">
+            <a href="#case-workspace">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              Case Workspace
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="assessment">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Assessment
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="assessment-queue">
+            <a href="#assessment-queue">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Assessment Queue
+            </a>
+          </li>
+          <li class="nav-item" data-route="assessment-workspace">
+            <a href="#assessment-workspace">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17l-5-5 5-5"/><path d="M15 17l5-5-5-5"/><path d="M12 19l-2-14"/></svg>
+              Assessment Workspace
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="approvals">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Approvals
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="internal-approvals">
+            <a href="#internal-approvals">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Internal Approvals
+            </a>
+          </li>
+          <li class="nav-item" data-route="approval-review">
+            <a href="#approval-review">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Approval Review
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="offers">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Offers &amp; Legal
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="offer-queue">
+            <a href="#offer-queue">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15V6a2 2 0 00-2-2H5a2 2 0 00-2 2v9"/><path d="M7 10h10"/><path d="M5 21h14"/></svg>
+              Offer Queue
+            </a>
+          </li>
+          <li class="nav-item" data-route="offer-builder">
+            <a href="#offer-builder">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15h6"/></svg>
+              Offer Builder
+            </a>
+          </li>
+          <li class="nav-item" data-route="conditions-checklist">
+            <a href="#conditions-checklist">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Conditions Checklist
+            </a>
+          </li>
+          <li class="nav-item" data-route="legal-pack">
+            <a href="#legal-pack">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              Legal Pack
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="setup">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Agreement &amp; Setup
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="pending-setup">
+            <a href="#pending-setup">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Pending Setup
+            </a>
+          </li>
+          <li class="nav-item" data-route="agreement-finalisation">
+            <a href="#agreement-finalisation">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Agreement Finalisation
+            </a>
+          </li>
+          <li class="nav-item" data-route="loan-setup">
+            <a href="#loan-setup">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h1M11 15h2"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+              Loan Setup
+            </a>
+          </li>
+          <li class="nav-item" data-route="disbursement-queue">
+            <a href="#disbursement-queue">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6"/></svg>
+              Disbursement Queue
+            </a>
+          </li>
+          <li class="nav-item" data-route="loan-record">
+            <a href="#loan-record">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h20M5 7V5a2 2 0 012-2h10a2 2 0 012 2v2M5 21h14a2 2 0 002-2V7H3v12a2 2 0 002 2z"/></svg>
+              Loan Record
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="repayments">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Repayments
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="repayments-overview">
+            <a href="#repayments-overview">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 4-5"/></svg>
+              Repayments Overview
+            </a>
+          </li>
+          <li class="nav-item" data-route="collection-batches">
+            <a href="#collection-batches">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
+              Collection Batches
+            </a>
+          </li>
+          <li class="nav-item" data-route="outcome-import">
+            <a href="#outcome-import">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Outcome Import
+            </a>
+          </li>
+          <li class="nav-item" data-route="reconciliation-queue">
+            <a href="#reconciliation-queue">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M11 8v3l2 2"/><path d="M21 21l-4.35-4.35"/></svg>
+              Reconciliation Queue
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="settings">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Settings
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="templates">
+            <a href="#templates">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              Templates
+            </a>
+          </li>
+          <li class="nav-item" data-route="conditions">
+            <a href="#conditions">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Conditions
+            </a>
+          </li>
+          <li class="nav-item" data-route="policies">
+            <a href="#policies">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+              Policies
+            </a>
+          </li>
+          <li class="nav-item" data-route="roles-permissions">
+            <a href="#roles-permissions">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Roles &amp; Permissions
+            </a>
+          </li>
+          <li class="nav-item" data-route="notifications">
+            <a href="#notifications">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Notifications
+            </a>
+          </li>
+          <li class="nav-item" data-route="lookups">
+            <a href="#lookups">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+              Lookups
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="ucf.html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        Open UCF View
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-shell-row">
+          <button class="mobile-toggle" title="Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <nav class="breadcrumb">
+            <a href="#overview">Platform</a>
+            <span class="separator">&gt;</span>
+            <a href="#overview">Loans</a>
+            <span class="separator">&gt;</span>
+            <span id="breadcrumb-current">Overview</span>
+          </nav>
+        </div>
+        <h1 class="header-title" id="page-title">Overview</h1>
+      </div>
+      <div class="header-right">
+        <button class="btn-icon" title="Notifications" style="position:relative">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </button>
+        <div class="header-avatar" title="ENI Operations">EN</div>
+      </div>
+    </header>
+
+    <main class="page-content" id="app"></main>
+  </div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loans Portal - eConX Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        'enx-navy': 'hsl(229, 61%, 28%)',
+        'enx-green': 'rgba(0, 173, 104, 0.9)'
+      }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/loans.css">
+</head>
+<body class="bg-[#f8f9fb]">
+  <aside class="sidebar portal-sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>Loans Portal</h1>
+      <div class="logo-subtitle">Customer Access</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section" data-section="portal-home">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Home
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="portal-home">
+            <a href="#portal-home">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>
+              My Application
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="application">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Application
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="application-form">
+            <a href="#application-form">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              Application Form
+            </a>
+          </li>
+          <li class="nav-item" data-route="participants">
+            <a href="#participants">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+              Participants
+            </a>
+          </li>
+          <li class="nav-item" data-route="supplementary-form">
+            <a href="#supplementary-form">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0113 0"/></svg>
+              Supplementary Form
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="documents">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Documents
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="documents">
+            <a href="#documents">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Upload Documents
+            </a>
+          </li>
+          <li class="nav-item" data-route="library">
+            <a href="#library">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              Document Library
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="repayments">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Live Loan
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="repayments">
+            <a href="#repayments">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 4-5"/></svg>
+              Repayments
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="signing">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Signing &amp; Help
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="signatures">
+            <a href="#signatures">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              Signatures
+            </a>
+          </li>
+          <li class="nav-item" data-route="messages">
+            <a href="#messages">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              Messages
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section" data-section="account">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Profile
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="account">
+            <a href="#account">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Profile &amp; Preferences
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        View Admin Prototype
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-shell-row">
+          <button class="mobile-toggle" title="Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <nav class="breadcrumb">
+            <a href="#portal-home">Portal</a>
+            <span class="separator">&gt;</span>
+            <span id="breadcrumb-current">My Application</span>
+          </nav>
+        </div>
+        <h1 class="header-title" id="page-title">My Application</h1>
+      </div>
+      <div class="header-right">
+        <span class="limited-badge">Secure Portal</span>
+        <div class="header-avatar" title="John Keenan">JK</div>
+      </div>
+    </header>
+
+    <main class="page-content" id="user-app"></main>
+  </div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/user-app.js"></script>
+</body>
+</html>

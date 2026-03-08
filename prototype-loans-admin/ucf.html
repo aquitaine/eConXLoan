@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UCF Approvals - eConX Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        'enx-navy': 'hsl(229, 61%, 28%)',
+        'enx-green': 'rgba(0, 173, 104, 0.9)'
+      }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/loans.css">
+</head>
+<body class="bg-[#f8f9fb]">
+  <aside class="sidebar ucf-sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>UCF</h1>
+      <div class="logo-subtitle">Restricted Approver</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section" data-section="approvals">
+        <div class="nav-section-header" onclick="toggleSection(this)">
+          Approvals
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item" data-route="approvals-inbox">
+            <a href="#approvals-inbox">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h10"/></svg>
+              Approvals Inbox
+            </a>
+          </li>
+          <li class="nav-item" data-route="approval-review">
+            <a href="#approval-review">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Approval Review
+            </a>
+          </li>
+          <li class="nav-item" data-route="decision-history">
+            <a href="#decision-history">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20v-3"/></svg>
+              Decision History
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to ENI Admin
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-shell-row">
+          <button class="mobile-toggle" title="Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <nav class="breadcrumb">
+            <a href="#approvals-inbox">Platform</a>
+            <span class="separator">&gt;</span>
+            <span>UCF Approvals</span>
+            <span class="separator">&gt;</span>
+            <span id="breadcrumb-current">Approvals Inbox</span>
+          </nav>
+        </div>
+        <h1 class="header-title" id="page-title">Approvals Inbox</h1>
+      </div>
+      <div class="header-right">
+        <span class="limited-badge">Restricted Access</span>
+        <div class="header-avatar" title="UCF">UC</div>
+      </div>
+    </header>
+
+    <main class="page-content" id="ucf-app"></main>
+  </div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/ucf-app.js"></script>
+</body>
+</html>
