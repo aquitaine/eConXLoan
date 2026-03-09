@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eConX Loan Module Prototypes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #1f2f46;
+      --green: #2f7d32;
+      --border: #e5e7eb;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+    main {
+      max-width: 900px;
+      margin: 48px auto;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+    h1 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 0 0 24px;
+      color: #4b5563;
+    }
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--green);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: inherit;
+      background: #fff;
+    }
+    a:hover {
+      background: #f9fafb;
+    }
+    .title {
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .desc {
+      margin-top: 4px;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>eConX Loan Module</h1>
+    <p>Public entry page for the static HTML prototypes.</p>
+    <div class="links">
+      <a href="prototype-loans-admin/index.html">
+        <div class="title">Internal Admin Prototype</div>
+        <div class="desc">Dashboard, cases, approvals, setup, repayments.</div>
+      </a>
+      <a href="prototype-loans-admin/ucf.html">
+        <div class="title">Restricted UCF Approver Prototype</div>
+        <div class="desc">Approvals inbox, review, and decision history.</div>
+      </a>
+      <a href="prototype-loans-admin/user.html">
+        <div class="title">User Portal Prototype</div>
+        <div class="desc">Application completion, uploads, signing, repayments.</div>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
